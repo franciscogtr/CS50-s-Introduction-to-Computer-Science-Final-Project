@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Adicionar Novo Serviço</h1>
+    <form action="/adicionar_servico" method="post" class="row g-3 needs-validation" novalidate data-bs-theme="dark">
+        <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">Nome do serviço</label>
+            <input type="text" class="form-control" name="nome" id="validationCustom01" value="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="validationCustom02" class="form-label">Preço</label>
+            <input type="number" step="0.01" class="form-control" name="preco" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        
+        <div class="col-12">
+            <button class="btn btn-primary" id="btn_content" type="submit">Registrar Serviço</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

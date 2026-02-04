@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Dashboard</h2>
+    <p>Bem-vindo ao seu painel de controle.</p>
+
+    {% if session.get("user_type") == "barbearia" %}
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/gerenciar_barbeiros" method="get" onclick="this.submit();">
+                <div class="card mb-4 shadow-sm" data-bs-theme="dark">
+                    <div id="card_body" class="card-body">
+                        <h5 class="card-title">Gerenciar Barbeiros</h5>
+                        <p class="card-text">Adicione, edite ou remova barbeiros da sua barbearia.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <form action="/agenda_barbeiros" method="get" onclick="this.submit();">
+                <div class="card mb-4 shadow-sm" data-bs-theme="dark">
+                    <div id="card_body" class="card-body">
+                        <h5 class="card-title">Agenda dos Barbeiros Cadastrados</h5>
+                        <p class="card-text">Visualize os horários já agendados de cada barbeiro.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <form action="/gerenciar_servicos" method="get" onclick="this.submit();">
+                <div class="card mb-4 shadow-sm" data-bs-theme="dark">
+                    <div id="card_body" class="card-body">
+                        <h5 class="card-title">Gerenciar Serviços</h5>
+                        <p class="card-text">Adicione, edite ou remova os serviços prestados pela sua barbearia.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <form action="/deletar_barbearia" method="get" onclick="this.submit();">
+                <div class="card mb-4 shadow-sm" data-bs-theme="dark">
+                    <div id="card_body" class="card-body">
+                        <h5 class="card-title">Deletar Barbearia</h5>
+                        <p class="card-text">Remova completamente a barbearia e todos os dados associados.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% elif session.get("user_type") == "barbeiro" %}
+    <div class="row">
+        <!-- TODO -->
+
+        <div class="col-md-6">
+            <form action="/ver_agenda" method="post" onclick="this.submit();">
+                <div class="card mb-4 shadow-sm" data-bs-theme="dark">
+                    <input type="hidden" name="barbeiro_id" value="{{ session['user_id'] }}">
+                    <div id="card_body" class="card-body">
+                        <h5 class="card-title">Agenda Semanal</h5>
+                        <p class="card-text">Visualize seus agendamentos da semana</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

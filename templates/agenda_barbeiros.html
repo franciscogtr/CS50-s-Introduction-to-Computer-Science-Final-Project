@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Agenda dos Barbeiros</h1>
+    <p class="text-center">Visualize a agenda dos barbeiros da sua barbearia.</p>
+
+    {% if barbeiros %}
+    <table class="table table-striped" data-bs-theme="dark">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for barbeiro in barbeiros %}
+            <tr>
+                <td>{{ barbeiro[1] }}</td>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <form action="/ver_agenda" method="post">
+                            <input type="hidden" name="barbeiro_id" value="{{ barbeiro[0] }}">
+                            <button type="submit" id="btn_content" class="btn btn-primary">Ver Agenda</button>
+                        </form>
+                        <!-- <a href="/editar_barbeiro/{{ barbeiro[0] }}" id="btn_header"class="btn btn-outline-success">Editar</a>
+                    <a href="/deletar_barbeiro/{{ barbeiro[0] }}" id="btn_content" class="btn btn-primary">Deletar</a> -->
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">Nenhum barbeiro cadastrado.</p>
+    {% endif %}
+</div>
+{% endblock %}

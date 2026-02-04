@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Agendamento Confirmado!</h1>
+    <p class="text-center">Seu agendamento foi realizado com sucesso.</p>
+    <div class="text-center mt-4">
+        <a href="/?barbearia={{ session.get('current_barber_shop') }}" id="btn_content" class="btn btn-primary">Voltar para a Página Inicial</a> 
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+
+#btn_header {
+    color: #FA5003;
+    border-color: #FA5003;
+    margin-right: 10px;
+}
+
+#btn_header:hover {
+    background-color: #FA5003;
+    color: white;
+}
+
+#btn_content {
+    color: white;
+    border-color: #FA5003;
+    background-color: #FA5003;
+}
+
+#btn_content:hover {
+    background-color: #fa3d03;
+    color: white;
+}
+
+#card_body:hover {
+    background-color: #FA5003;
+    border-radius: 4px;  
+}  
+
+h2 {
+    color: #FA5003;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #FA5003;
+    border-color: #FA5003;   
+}
+
+#navbar_toggler {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+#navbar_icon {
+    color: #FA5003;
+    font-size: 25px;
+}
+
+table {
+    text-align: center;
+}
+
+tbody td {
+    vertical-align: middle;
+}
+

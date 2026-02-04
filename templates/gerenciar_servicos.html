@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Gerenciar Serviços</h1>
+    <p class="text-center">Gerencie os serviços da sua barbearia.</p>
+
+    <div class="d-flex justify-content-center mb-4">
+        <a id="btn_content" href="/adicionar_servico" class="btn btn-primary">Adicionar Novo Serviço</a>
+    </div>
+
+    {% if servicos %}
+    <table class="table table-striped" data-bs-theme="dark">
+        <thead>
+            <tr>
+                <th>Servico</th>
+                <th>Preco</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for servico in servicos %}
+            <tr>
+                <td>{{ servico[1] }}</td>
+                <td>R$ {{ "%.2f"| format(servico[2]) }}</td>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <form action="/editar_servico" method="post">
+                            <input type="hidden" name="servico_id" value="{{ servico[0] }}">
+                            <input type="hidden" name="action" value="editar">
+                            <button type="submit" id="btn_header" class="btn btn-outline-success">Editar</button>
+                        </form>
+
+                        <form action="/gerenciar_servicos" method="post">
+                            <input type="hidden" name="servico_id" value="{{ servico[0] }}">
+                            <input type="hidden" name="action" value="deletar">
+                            <button type="submit" id="btn_content" class="btn btn-primary">Deletar</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">Nenhum serviço cadastrado.</p>
+    {% endif %}
+</div>
+{% endblock %}

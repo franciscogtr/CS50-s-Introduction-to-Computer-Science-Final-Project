@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+
+    <div class="row">
+        {% for horario in horarios_formatados %}
+        <div class="col-md-4 mb-4">
+            <form action="/confirmar_agendamento" method="post" onclick="this.submit()">
+                <input type="hidden" name="horario" value="{{ horario }}">
+                <input type="hidden" name="data" value="{{ data }}">
+                <input type="hidden" name="barbeiro_id" value="{{ barbeiro_id }}">
+                <input type="hidden" name="servico_id" value="{{ servico_id }}">
+                <input type="hidden" name="barbearia_id" value="{{ barbearia_id }}">
+                <div class="card h-100 shadow-sm" data-bs-theme="dark">
+                    <div id="card_body" class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <h5 class="card-title">{{ horario }}</h5>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

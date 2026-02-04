@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">{{ barbearia[3] }}</h1>
+    <p class="text-center">Clique em um de nossos serviços e agende o seu horário.</p>
+
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        {% for servico in servicos %}
+        <div class="col-md-4 mb-4">
+            <form action="/escolher_barbeiro" method="post" onclick="this.submit()">
+                <input type="hidden" name="servico_id" value="{{ servico[0] }}">
+                <input type="hidden" name="barbearia_id" value="{{ barbearia[0] }}">
+                <div class="card h-100 shadow-sm" data-bs-theme="dark">
+                    <div id="card_body" class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ servico[1] }}</h5>
+                        <p class="card-text">Preço: R$ {{ "%.2f"| format(servico[2]) }}</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {% endblock %}

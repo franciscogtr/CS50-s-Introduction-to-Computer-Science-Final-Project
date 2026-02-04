@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Confirmação de Agendamento</h2>
+    <div class="card shadow-sm" data-bs-theme="dark">
+        <div class="card-body">
+            <h5 class="card-title">Detalhes do Agendamento</h5>
+            <p class="card-text"><strong>Barbearia:</strong> {{ barbearia[3] }}</p>
+            <p class="card-text"><strong>Barbeiro:</strong> {{ barbeiro[1] }} </p>
+            <p class="card-text"><strong>Serviço:</strong> {{ servico[1] }} - R$ {{ "%.2f"| format(servico[2]) }}</p>
+            <p class="card-text"><strong>Data do Agendamento:</strong> {{ data_agendada.strftime("%d/%m/%Y") }}</p>
+            <p class="card-text"><strong>Horário do Agendamento:</strong> {{ horario }}</p>
+            <form action="/finalizar_agendamento" method="post">
+                <input type="hidden" name="barbeiro_id" value="{{ barbeiro[0] }}">
+                <input type="hidden" name="servico_id" value="{{ servico[0] }}">
+                <input type="hidden" name="barbearia_id" value="{{ barbearia[0] }}">
+                <input type="hidden" name="data_agendada" value="{{ data_agendada }}">
+                <input type="text" name="nome_cliente" class="form-control mb-3" placeholder="Informe seu nome para finalizar" required>
+                <button type="submit" id="btn_content" class="btn btn-success">Confirmar Agendamento</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

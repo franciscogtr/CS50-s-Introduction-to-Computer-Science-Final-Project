@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <form action="/escolher_horario" method="post" class="d-flex justify-content-center w-100" data-bs-theme="dark">
+            <div class="col-md-4 mb-4">
+                <label for="data" class="form-label">Escolha uma data:</label>
+                <input type="date" id="data" name="data" class="form-control" min="{{ hoje }}" max="{{ limite }}" required>
+            </div>
+            <input type="hidden" name="barbeiro_id" value="{{ barbeiro_id }}">
+            <input type="hidden" name="servico_id" value="{{ servico_id }}">
+            <input type="hidden" name="barbearia_id" value="{{ barbearia_id }}">
+            <div class="col-md-4 align-self-end mb-4">
+                <button id="btn_content" type="submit" class="btn btn-primary">Escolher Horário</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

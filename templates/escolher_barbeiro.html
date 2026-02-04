@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+
+    <div class="row">
+        {% for barbeiro in barbeiros %}
+        <div class="col-md-4 mb-4">
+            <form action="/escolher_data" method="post" onclick="this.submit()">
+                <input type="hidden" name="barbeiro_id" value="{{ barbeiro[0] }}">
+                <input type="hidden" name="servico_id" value="{{ servico_id }}">
+                <input type="hidden" name="barbearia_id" value="{{ barbeiro[5] }}">
+                <div class="card h-100 shadow-sm" data-bs-theme="dark">
+                    <div id="card_body" class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <h5 class="card-title">{{ barbeiro[1] }}</h5>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {% endblock %}
