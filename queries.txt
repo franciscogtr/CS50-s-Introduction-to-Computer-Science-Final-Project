@@ -1,0 +1,46 @@
+CREATE TABLE barbearia(
+  id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,
+  cnpj TEXT NOT NULL,
+  razao_social TEXT NOT NULL,
+  nome_fantasia TEXT NOT NULL
+  username TEXT NOT NULL,
+  hash TEXT NOT NULL
+);
+
+CREATE UNIQUE INDEX username ON barbearia (username);
+
+CREATE TABLE barbeiros(
+    id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,
+    nome TEXT NOT NULL
+    cpf TEXT NOT NULL,
+    username TEXT NOT NULL,
+    hash TEXT NOT NULL
+    barbeariaId INTEGER NOT NULL
+
+    FOREIGN KEY (barbeariaId) REFERENCES barbearia(id)
+);
+
+CREATE UNIQUE INDEX username ON barbeiros (username);
+
+CREATE TABLE servicos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    nome TEXT NOT NULL,
+    preco NUMERIC NOT NULL
+    barbeiroId INTEGER NOT NULL,
+
+    FOREIGN KEY (barbeiroId) REFERENCES barbeiros(id)
+);
+
+CREATE TABLE agenda(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    nomeCliente TEXT NOT NULL,
+    barbeariaId INTEGER NOT NULL,
+    barbeiroId INTEGER NOT NULL,
+    servicoId INTEGER NOT NULL,
+    dataAgendamento TEXT NOT NULL,
+    dataAgendada TEXT NOT NULL
+
+    FOREIGN KEY (barbeariaId) REFERENCES barbearia(id)
+    FOREIGN KEY (barbeiroId) REFERENCES barbeiros(id)
+    FOREIGN KEY (servicoId) REFERENCES servicos(Id)
+);
